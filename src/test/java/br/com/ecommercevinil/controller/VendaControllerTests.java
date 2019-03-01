@@ -1,5 +1,7 @@
 package br.com.ecommercevinil.controller;
 
+import br.com.ecommercevinil.model.Venda;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +15,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.nio.charset.Charset;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
@@ -24,6 +27,13 @@ public class VendaControllerTests {
     private static final String PARAMETRO_DATA_INICIAL = "dataInicial";
     private static final String PARAMETRO_DATA_FINAL = "dataFinal";
 
+    public static String asJsonString(final Object obj) {
+        try {
+            return new ObjectMapper().writeValueAsString(obj);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     private static final MediaType CONTENT_TYPE = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
@@ -60,6 +70,18 @@ public class VendaControllerTests {
                         .contentType(CONTENT_TYPE)
         )
                 .andExpect(status().isOk())
+                .andReturn();
+    }
+
+    @Test
+    public void vender() throws Exception {
+        Venda venda = Venda.builder().build();
+        mockMvc.perform(
+                post(URL_VENDA)
+                .contentType(CONTENT_TYPE)
+                .content(asJsonString(venda))
+        )
+                .andExpect(status().isCreated())
                 .andReturn();
     }
 
