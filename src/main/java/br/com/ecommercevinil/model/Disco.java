@@ -1,14 +1,13 @@
 package br.com.ecommercevinil.model;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class Disco implements Serializable {
 
     private static final long serialVersionUID = 7999942222907517014L;
@@ -17,6 +16,8 @@ public class Disco implements Serializable {
     private Integer id;
     @Getter
     private String nome;
+    @Getter
+    private Integer ano;
     @Getter
     private BigDecimal valor;
     @Getter

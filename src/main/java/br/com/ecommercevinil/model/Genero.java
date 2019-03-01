@@ -1,5 +1,6 @@
 package br.com.ecommercevinil.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class Genero implements Serializable {
 
