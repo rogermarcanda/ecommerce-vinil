@@ -7,11 +7,11 @@ import lombok.NoArgsConstructor;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@NoArgsConstructor
 @Builder
-public class Vinil implements Serializable {
+@NoArgsConstructor
+public class Disco implements Serializable {
 
-    private static final long serialVersionUID = -224015881376052545L;
+    private static final long serialVersionUID = 7999942222907517014L;
 
     @Getter
     private Integer id;
