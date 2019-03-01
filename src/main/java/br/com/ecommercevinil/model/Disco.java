@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
 public class Disco implements Serializable {
 
     private static final long serialVersionUID = 7999942222907517014L;
