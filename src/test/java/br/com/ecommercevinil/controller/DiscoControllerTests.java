@@ -23,6 +23,7 @@ public class DiscoControllerTests {
 
     private static final String URL_DISCO = "/disco";
     private static final String PARAMETRO_ID_GENERO = "idGenero";
+    private static final String PARAMETRO_ID_DISCO = "idDisco";
 
     private static final MediaType CONTENT_TYPE = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
@@ -48,5 +49,16 @@ public class DiscoControllerTests {
             )
             .andExpect(status().isOk())
             .andReturn();
+    }
+
+    @Test
+    public void buscar_disco_por_id() throws Exception {
+
+        mockMvc.perform(
+                get(URL_DISCO + "/1")
+                        .contentType(CONTENT_TYPE)
+        )
+                .andExpect(status().isOk())
+                .andReturn();
     }
 }
