@@ -25,4 +25,11 @@ public class DiscoServiceImpl implements DiscoService {
         Pageable pageable = PageRequest.of(numeroDaPagina, qtdePorPagina, sort);
         return discoRepository.findByGenero(idGenero, pageable);
     }
+
+    @Override
+    public Disco buscarPorId(Integer idDisco) {
+        return discoRepository
+                .findById(idDisco)
+                .orElseThrow(() -> new RuntimeException("Disco não encontrad"));
+    }
 }

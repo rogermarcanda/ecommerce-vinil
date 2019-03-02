@@ -7,4 +7,6 @@ import java.util.List;
 public interface DiscoService{
 
     List<Disco> buscarPorGenero(Integer idGenero, Integer numeroDaPagina, Integer qtdePorPagina);
+
+    Disco buscarPorId(Integer idDisco);
 }
