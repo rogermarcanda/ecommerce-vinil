@@ -2,10 +2,7 @@ package br.com.ecommercevinil.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -22,13 +19,18 @@ public class Disco implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
+
     @Getter
     private String nome;
+
     @Getter
     private Integer ano;
+
     @Getter
     private BigDecimal valor;
+
     @Getter
-    @OneToMany(targetEntity = Genero.class)
+    @ManyToOne
+    @JoinColumn(name="genero", referencedColumnName = "id")
     private Genero genero;
 }

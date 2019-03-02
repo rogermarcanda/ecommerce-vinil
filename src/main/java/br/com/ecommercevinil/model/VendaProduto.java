@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -23,9 +21,15 @@ public class VendaProduto implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
-    private Disco disco;
+
+    //@ManyToOne
+    //@JoinColumn(name="disco", referencedColumnName = "id")
+    //private Disco disco;
+
     private Integer qtde;
+
     private BigDecimal valor;
+
     private BigDecimal valorComCashBack;
 
 }
