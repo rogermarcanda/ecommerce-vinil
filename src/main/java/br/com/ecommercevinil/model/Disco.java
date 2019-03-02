@@ -2,6 +2,10 @@ package br.com.ecommercevinil.model;
 
 import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -9,11 +13,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
+@Entity
 public class Disco implements Serializable {
 
     private static final long serialVersionUID = 7999942222907517014L;
 
     @Getter
+    @Id
+    @GeneratedValue
     private Integer id;
     @Getter
     private String nome;
@@ -22,5 +29,6 @@ public class Disco implements Serializable {
     @Getter
     private BigDecimal valor;
     @Getter
+    @OneToMany(targetEntity = Genero.class)
     private Genero genero;
 }
