@@ -2,6 +2,7 @@ package br.com.ecommercevinil.controller;
 
 import br.com.ecommercevinil.service.DiscoService;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = DiscoController.class)
+@Ignore("")
 public class DiscoControllerTests {
 
     private static final String URL_DISCO = "/disco";
