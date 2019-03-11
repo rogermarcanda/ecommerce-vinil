@@ -12,22 +12,24 @@ services:
     ports:
       - "5432:5432"
 
-  ecommerce-vinil-api:
-    build: ./
-    container_name: ecommerce-vinil-api
+#  ecommerce-vinil-api:
+    #    build: ./
+      #container_name: ecommerce-vinil-api
     #restart: always
-    environment:
-      - BD_URL=jdbc:postgresql://ecommerce-vinil-bd:5432/bd_ecommerce_vinil
-      - BD_USER=postgres
-      - BD_PASS=123456
-      - SPOTIFY_CLIENT_ID=84252cb30b594478834de6bc1b856ad6
-      - SPOTIFY_CLIENT_SECRET=ab8f9d972e664d9a8a44791bb3b0af1d
-    networks:
-      - ecommerce-vinil-network
-    ports:
-      - "8080:8080"
-    depends_on:
-      - "ecommerce-vinil-bd"
+      #environment:
+    #- BD_HOST=ecommerce-vinil-bd
+      #- BD_PORT=5432
+      #      - BD_BASE=bd_ecommerce_vinil
+      #      - BD_USER=postgres
+      #- BD_PASS=123456
+      #      - SPOTIFY_CLIENT_ID=84252cb30b594478834de6bc1b856ad6
+#      - SPOTIFY_CLIENT_SECRET=ab8f9d972e664d9a8a44791bb3b0af1d
+#    networks:
+#      - ecommerce-vinil-network
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - "ecommerce-vinil-bd"
 
 
 networks:

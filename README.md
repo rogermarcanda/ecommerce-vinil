@@ -17,20 +17,27 @@ Docker-compose
 clone o projeto:
 
 ```
-# git clone https://gitlab.com/zs-imasters/ecb-catalogo-admin-backend.git
+# git clone https://github.com/rogermarcanda/ecommerce-vinil.git
 ```
 
-### gerando o JAR
+### Subindo e gerando o banco de dados
 
 ```bash
- mvn clean install
+ docker-compose build
+ docker-compose up
+ 
 ```
 
 ### Executando a API
 ```
- docker-compose build
- docker-compose up
+ mvn clean install
+ java -jar target/ecommerce-vinil-api-0.0.1-SNAPSHOT.jar
 ```
+ou
+```
+ mvn spring-boot:run
+```
+
 
 ## Dados importantes
 
@@ -56,5 +63,7 @@ http://127.0.0.1:8080/swagger-ui.html
 ```
 
 ###Deficit Tecnico
+ devido a problemas a acessar o serviço do Spotify não foi possivel utilzar docker para rodar a aplicação
  faltou adicionar um docker para geracao do jar com maven... por este motivo é necessario ter o maven e o java instalados.
+ 
  

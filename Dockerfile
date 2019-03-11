@@ -4,7 +4,7 @@ COPY ./target/ecommerce-vinil-api-0.0.1-SNAPSHOT.jar /usr/src/ecommerce-vinil-ap
 
 WORKDIR /usr/src/ecommerce-vinil-api
 
-EXPOSE 8080
+EXPOSE 8080 80
 
 CMD java -jar ecommerce-vinil-api.jar
 
