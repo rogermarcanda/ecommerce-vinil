@@ -2,26 +2,30 @@ package br.com.ecommercevinil.service.impl;
 
 import br.com.ecommercevinil.model.Venda;
 import br.com.ecommercevinil.repository.VendaRepository;
+import br.com.ecommercevinil.service.CashBackService;
 import br.com.ecommercevinil.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class VendaServiceImpl implements VendaService {
 
     private VendaRepository vendaRepository;
+    private CashBackService cashBackService;
 
     @Autowired
-    public VendaServiceImpl(VendaRepository vendaRepository) {
+    public VendaServiceImpl(
+            VendaRepository vendaRepository,
+            CashBackService cashBackService) {
         this.vendaRepository = vendaRepository;
+        this.cashBackService = cashBackService;
     }
-
 
     @Override
     public Venda findById(Integer idVenda) {
@@ -31,10 +35,15 @@ public class VendaServiceImpl implements VendaService {
     }
 
     @Override
-    public List<Venda> findByBetweenData(LocalDate dataInicial, LocalDate dataFinal, Integer numeroDaPagina, Integer qtdePorPagina) {
+    public Page<Venda> findByBetweenData(LocalDate dataInicial, LocalDate dataFinal, Integer numeroDaPagina, Integer qtdePorPagina) {
         Sort sort = Sort.by(Sort.Direction.DESC, "data");
         Pageable pageable = PageRequest.of(numeroDaPagina, qtdePorPagina, sort);
         return vendaRepository.findByBetweenData(dataInicial, dataFinal, pageable);
+    }
+
+    @Override
+    public void popularDataVenda(Venda venda) {
+        venda.setData(LocalDate.now());
     }
 
     @Override

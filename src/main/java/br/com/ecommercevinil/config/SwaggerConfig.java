@@ -24,7 +24,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.ecommerce-vinil"))
+                .apis(RequestHandlerSelectors.basePackage("br.com.ecommercevinil"))
                 .paths(PathSelectors.any())
                 .build()
                 .apiInfo(apiInfo())

@@ -1,23 +1,10 @@
 package br.com.ecommercevinil.model;
 
-import lombok.*;
+public enum  Genero{
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
+    POP,
+    MPB,
+    CLASSIC,
+    ROCK
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@EqualsAndHashCode
-@Entity
-public class Genero implements Serializable {
-
-    private static final long serialVersionUID = 6235956392222945617L;
-
-    @Getter
-    @Id
-    private Integer id;
-    @Getter
-    private String nome;
 }

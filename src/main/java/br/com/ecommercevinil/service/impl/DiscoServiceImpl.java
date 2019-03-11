@@ -1,9 +1,11 @@
 package br.com.ecommercevinil.service.impl;
 
 import br.com.ecommercevinil.model.Disco;
+import br.com.ecommercevinil.model.Genero;
 import br.com.ecommercevinil.repository.DiscoRepository;
 import br.com.ecommercevinil.service.DiscoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -22,10 +24,15 @@ public class DiscoServiceImpl implements DiscoService {
     }
 
     @Override
-    public List<Disco> buscarPorGenero(Integer idGenero, Integer numeroDaPagina, Integer qtdePorPagina) {
+    public Page<Disco> buscarPorGenero(Genero genero, Integer numeroDaPagina, Integer qtdePorPagina) {
         Sort sort = Sort.by(Sort.Direction.ASC, "nome");
         Pageable pageable = PageRequest.of(numeroDaPagina, qtdePorPagina, sort);
-        return discoRepository.findByGenero(idGenero, pageable);
+        return discoRepository.findByGenero(genero, pageable);
+    }
+
+    @Override
+    public Boolean isDiscosDoGeneroExiste(Genero genero) {
+        return discoRepository.countByGenero(genero) > 0;
     }
 
     @Override
@@ -33,5 +40,10 @@ public class DiscoServiceImpl implements DiscoService {
         return discoRepository
                 .findById(idDisco)
                 .orElseThrow(() -> new RuntimeException("Disco não encontrad"));
+    }
+
+    @Override
+    public void salvarDiscosDoGenero(List<Disco> discoList) {
+        discoRepository.saveAll(discoList);
     }
 }
